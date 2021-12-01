@@ -1,6 +1,6 @@
 # Advent of Code 2021
 # 01 December
-# Part 1
+# Part 2
 # Jelle Bosschaart
 
 import pandas as pd

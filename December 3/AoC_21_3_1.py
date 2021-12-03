@@ -6,17 +6,17 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('D:\GitHub\Advent-of-Code-2021\December 3\AoC_21_3_1.txt', dtype='string')
-data = data['Data'].tolist()
+data = pd.read_csv(r'C:\Users\jnbos\Documents\GitHub\Advent-of-Code-2021\December 3\AoC_21_3_1.txt', dtype='string')
+totals = []
+gamma = []
 
-totals = {'1_0': 0, '1_1': 0, '2_0': 0, '2_1': 0,'3_0': 0, '3_1': 0,'4_0': 0, '4_1': 0,'5_0': 0, '5_1': 0,}
+for i in range(0, len(data['Data'][0])):
+    totals.append(sum(list((data['Data'].str[i]).astype(int))))
 
-for i in data:
-    for u in range(1, 12):
-        if i[u] == 0:
-            totals[f'{u}_0'] += 1
-        else:
-            totals[f'{u}_1'] += 1
-        
-    
-    
+totals = np.array(totals)
+gamma = list(map(int, totals > len(data)/2))
+epsilon = list(map(int, totals < len(data)/2))
+
+gamma_d = 394
+epsilon_d = 3701
+power_consumption = gamma_d * epsilon_d
